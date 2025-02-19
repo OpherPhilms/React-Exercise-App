@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import react from 'react';
+import { useState } from 'react';
+import RepetitionExercise from "./components/RepetitionExercise";
+import DurationExercise from "./components/DurationExercise";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [selectedButton, setSelectedButton] = useState(null);
+  let defaultReturn = (
+    <div>
+      <h1>Exercise Tracker!</h1>
+      <p>Select an exercise:</p>
+      <button onClick={() => setSelectedButton("Running")}>Running</button>
+      <br></br>
+      <button onClick={() => setSelectedButton("Pushups")}>Pushups</button>
+      <br></br>
+      <button onClick={() => setSelectedButton("Cycling")}>Cycling</button>
+      <br></br>
+      <button onClick={() => setSelectedButton("Sit ups")}>Sit ups</button>
+      <br></br>
+      <button onClick={() => setSelectedButton("Planking")}>Planking</button>
+
+
     </div>
   );
+  if (selectedButton === "Pushups" || selectedButton === "Sit ups") {
+    defaultReturn = <RepetitionExercise name={selectedButton}></RepetitionExercise>;
+
+  } else if (selectedButton) {
+    defaultReturn = <DurationExercise name={selectedButton}></DurationExercise>;
+
+  }
+
+  return defaultReturn;
 }
 
 export default App;
