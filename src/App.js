@@ -3,6 +3,7 @@ import react from 'react';
 import { useState } from 'react';
 import RepetitionExercise from "./components/RepetitionExercise";
 import DurationExercise from "./components/DurationExercise";
+import RunningExercise from './components/RunningExercise';
 
 function App() {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -27,7 +28,7 @@ function App() {
     defaultReturn = <RepetitionExercise name={selectedButton}></RepetitionExercise>;
 
   } else if (selectedButton) {
-    defaultReturn = <DurationExercise name={selectedButton}></DurationExercise>;
+    defaultReturn = <RunningExercise name={selectedButton}></RunningExercise>;
 
   }
 
